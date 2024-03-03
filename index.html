@@ -1,32 +1,53 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="light">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/daisyui@4.7.2/dist/full.min.css" rel="stylesheet" type="text/css" />
-<script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
 
     <title>ReTro</title>
 </head>
+
 <body class="mr-5 ml-5">
     <header>
+        <!-- naavbar -->
         <nav class="mt-7">
             <div class="navbar bg-base-100">
                 <div class="flex-1">
-                  <a class="btn btn-ghost text-xl">ReTro</a>
+                    <a class="btn btn-ghost text-xl">ReTro</a>
                 </div>
                 <div class="flex-none gap-3">
-                  <img src="images/Frame 2.png" alt="" title="HOME" style=" cursor: pointer;">
-            
-                  <img src="images/Frame 3.png" alt="" title="EDIT" style=" cursor: pointer;">
-                  <img src="images/Frame 4.png" alt="" title="REQUEST" style=" cursor: pointer;">
-                  <img src="images/Frame 5.png" alt="" title="MORE" style=" cursor: pointer;">
-                  <button class="btn rounded-full bg-[#797DFC]">Sign In</button>
+                    <img src="images/Frame 2.png" alt="" title="HOME" style=" cursor: pointer;">
+
+                    <img src="images/Frame 3.png" alt="" title="EDIT" style=" cursor: pointer;">
+                    <img src="images/Frame 4.png" alt="" title="REQUEST" style=" cursor: pointer;">
+                    <img src="images/Frame 5.png" alt="" title="MORE" style=" cursor: pointer;">
+                    <button class="btn rounded-full bg-[#797DFC]">Sign In</button>
 
                 </div>
-              </div>
+            </div>
         </nav>
+
+        <!-- bannar -->
+        <section>
+            <div class="hero min-h-screen rounded-xl mt-5 bg-blue-950" style="background-image: url(images/bgbanner.png);">
+                <div class="hero-content flex-col lg:flex-row">
+                    <div class="text-center lg:text-left">
+                        <img src="images/Group 5.png" alt="">
+                        <input type="text" placeholder="Search here anything" class="input input-bordered input-info w-full max-w-xs rounded-full" />
+                        <button class="btn rounded-full bg-[#797DFC]">Sign In</button>
+                    </div> 
+                   
+                    <div class="card shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
+                        <img src="images/Frame 9.png" alt="">
+                    </div>
+                </div>
+            </div>
+        </section>
     </header>
     <script src="js/extra.js"></script>
 </body>
+
 </html>
