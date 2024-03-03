@@ -9,7 +9,7 @@ const getPost=(getPosts)=>
 {
     const showPost = document.getElementById('posts')
     getPosts.forEach(post => {
-        console.log(post)
+        // console.log(post)
         const creating = document.createElement('div')
         creating.innerHTML= `<div class="card  mt-5 flex-row bg-[#797DFC1A] ">
         <div class="p-5">
@@ -112,3 +112,49 @@ const showData = async (inputFieldText) => {
 };
 
  
+const latastPost = async ()=>{
+    const  res = await fetch("https://openapi.programming-hero.com/api/retro-forum/latest-posts")
+    const getName = await res.json()
+    console.log(getName)
+    getA(getName)
+}
+ const getA = (getName)=>{
+    const getB = document.getElementById("get-B")
+
+getName.forEach(c =>{
+    console.log(c)
+    const creatingTAg =document.createElement('div')
+    creatingTAg.innerHTML=`
+    <div class="card card-compact  bg-base-100 shadow-xl mt-5">
+                <figure><img src="${c.cover_image}" alt="" /></figure>
+                <div class="card-body">
+                    <div class=" flex flex-row ">
+                        <img src="images/Frame.png" alt=""><p>${c?.
+                            author?.posted_date || 'No publish date'}</p>
+                    </div>
+                  <h2 class="card-title">${
+                    c.title}</h2>
+                  <p>${
+                    c.description
+                    }</p>
+                  <div class="card-actions justify-start">
+                    <div class="avatar">
+                        <div class="w-20 rounded-full">
+                          <img src="${c.profile_image}" />
+                        </div>
+                      </div>
+                      <div>
+                        <h3 class="text-2xl font-bold">${c.author.name}</h3>
+                        <p>${c.author?.designation || 'Unknown'}</p>
+                      </div>
+                  </div>
+                </div>
+              </div>`
+              getB.appendChild(creatingTAg)
+
+});
+
+ }
+
+
+latastPost();
