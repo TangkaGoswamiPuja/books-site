@@ -1,10 +1,8 @@
-const showData=async(inputFieldText)=>
-{
-const res=await fetch(`https://openapi.programming-hero.com/api/retro-forum/posts?category=${inputFieldText}`)
-const getData = await res.json();
-const getPosts = getData.posts;
-// console.log(getPosts)
-getPost(getPosts);
+const loadInitialData = async () => {
+    const res = await fetch("https://openapi.programming-hero.com/api/retro-forum/posts");
+    const getData = await res.json();
+    const getPosts = getData.posts;
+    getPost(getPosts);
 }
 
 const getPost=(getPosts)=>
@@ -41,7 +39,7 @@ const getPost=(getPosts)=>
                 <p>${post.posted_time
                 } min</p>
 
-                <button onclick='touch("${post.description},${post.view_count}")'class="btn rounded-full">
+                <button onclick='touch("${post.description}","${post.view_count}")'class="btn rounded-full">
                 <img src="images/Group.png" alt=""></button>
             </div>
         </div>
@@ -52,17 +50,30 @@ const getPost=(getPosts)=>
     })
 
    loading(false);
+   
 }
 
+const showData = async (inputFieldText) => {
+    loading(true);
+    const res = await fetch(`https://openapi.programming-hero.com/api/retro-forum/posts?category=${inputFieldText}`);
+    const getData = await res.json();
+    const getPosts = getData.posts;
+    const showPost = document.getElementById('posts');
+    
+    showPost.innerHTML = '';
+    
+    getPost(getPosts);
+}
 
  const getInput=()=>{
-    loading(true);
+
     const inputField=document.getElementById("input")
    
     const inputFieldText= inputField.value ;
    
     showData(inputFieldText);
  }
+ window.onload = loadInitialData;
 
  const loading = (isSpining)=>{
     const load = document.getElementById("spinner")
@@ -76,34 +87,28 @@ const getPost=(getPosts)=>
 
  }
 
- const touch =(id)=>
+ const touch = async (description, view_count) => {
+    console.log(description, view_count);
 
- { console.log(id)
-//     const res =await fetch(`https://openapi.programming-hero.com/api/retro-forum/posts?category=${post}`)
-//  const data = await res.json()
-//  console.log(data)
-   
+    try {
+        const getTitle = document.getElementById("show-title");
+      
 
-    
-// const getTitle = document.getElementById("show-title")
-// const createDiv = document.createElement('div')
-// createDiv.innerHTML=`
-// <div class="card-body">
-
-//                     <div class="card  bg-white shadow-2xl">
-
-//                         <div class="card-body flex flex-row">
-//                             <p>
-//                             ${post.description}
-//                             </p>
-
-//                             <img src="images/Group 16.png" alt="">
-//                             <p>${post.view_count}</p>
-
-//                         </div>
-//                     </div>
-//                 </div>`
-// getTitle.appendChild(div)
- }
+        const createDiv = document.createElement('div');
+        createDiv.innerHTML = `
+            <div class="card-body">
+                <div class="card bg-white shadow-2xl">
+                    <div class="card-body flex flex-row">
+                        <p>${description}</p>
+                        <img src="images/Group 16.png" alt="">
+                        <p>${view_count}</p>
+                    </div>
+                </div>
+            </div>`;
+        getTitle.appendChild(createDiv);
+    } catch (error) {
+        console.error('Error appending data:', error);
+    }
+};
 
  
